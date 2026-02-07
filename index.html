@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS Marketing e Estratégia | Performance de Elite</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="imgs/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+<style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #8D9BA4;
+            --accent: #48de11;
+            --bg: #C4C9CD;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ================= NAV ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .nav-left img {
+            width: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .85rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            padding: 160px 20px 100px;
+            background: linear-gradient(135deg, var(--primary), #1a3a5a);
+            color: white;
+            text-align: center;
+        }
+
+        .hero img {
+            max-width: 140px;
+            margin: 0 auto 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            opacity: .9;
+            font-size: 1.05rem;
+        }
+
+        /* ================= GERAL ================= */
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+        }
+
+        /* ================= TRAJETÓRIA ================= */
+        .trajetoria {
+            background: var(--white);
+        }
+
+        .timeline-item {
+            border-left: 4px solid var(--accent);
+            padding-left: 25px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            position: absolute;
+            left: -9px;
+            top: 6px;
+            border-radius: 50%;
+        }
+
+        /* ================= QUEM SOMOS ================= */
+        .highlight-box {
+            background: var(--secondary);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .highlight-box h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        /* ================= PLANOS ================= */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: .85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .features {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .features li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: .95rem;
+        }
+
+        .features i {
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        .hiper-card {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+
+        .hiper-card h3,
+        .hiper-card .subtitle,
+        .hiper-card i {
+            color: var(--accent);
+        }
+
+        /* ================= BOTÕES ================= */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: .3s;
+            text-align: center;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            opacity: .9;
+            letter-spacing: 1px;
+        }
+
+        .btn-orcamento {
+            display: block;
+            margin: 90px auto 0;
+            width: 100%;
+            max-width: 900px;
+
+            padding: 150px 80px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+
+            background: var(--primary);   /* ✅ cor original */
+            color: var(--accent);         /* ✅ texto verde */
+            border-radius: 35px;
+            text-align: center;
+
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        footer img {
+            max-width: 120px;
+            margin: 0 auto 20px;
+        }
+
+        /* ================= MOBILE ================= */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .btn-orcamento {
+                font-size: 1.3rem;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="imgs/GS branco.png" alt="Logo GS Marketing" class="nav-logo-img">
+                <span class="nav-logo-text">- Marketing e Estratégia</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#trajetoria">A História</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#objetivo">Objetivo</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <center><img src="imgs/GS branco.png"/></center>
+            <h1>Marketing que traz <span style="color:var(--accent)">90% das suas vendas.</span></h1>
+            <p>O desempenho da sua empresa reflete a qualidade do seu marketing.<br> Na GS Marketing e Estratégia, você encontra a estratégia certa. Resultados que você vê no caixa.</p>
+            <a href="#planos" class="btn btn-accent" style="display:inline-block; padding: 15px 40px;">Ver Planos de Performance</a>
+        </div>
+    </section>
+
+    <section class="trajetoria" id="trajetoria">
+        <div class="container">
+            <h2 class="section-title">A Jornada do Fundador</h2>
+            <div class="content-box">
+                <div class="timeline-item">
+                    <p><strong>Aos 12 anos:</strong> Gustavo sonhava em trabalhar apenas utilizando o computador. Após muitas pesquisas, ele conheceu o marketing, e esse modelo de negócio mudou a vida desse garoto.</p>
+                </div>
+                <div class="timeline-item">
+                    <p><strong>Aos 14 anos:</strong> Começou a fazer o marketing de um lava-rápido onde trabalhava. Viu resultados surpreendentes de imediato, mas sabia que precisava de mais investimento para ampliar a operação.</p>
+                </div>
+                <div class="timeline-item">
+                    <p><strong>Aos 16 anos:</strong> Após uma passagem pelo regime CLT para entender a dor de outros empreendedores e captar recursos, fundou definitivamente a <strong>GS Marketing e Estratégia</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quem-somos" style="background: var(--gray);">
+        <div class="container">
+            <h2 class="section-title">Quem Somos?</h2>
+            <div class="content-box">
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                    A GS Marketing e Estratégia nasceu para resolver as dificuldades de empreendedores que possuem produtos incríveis, mas não sabem como vendê-los, anunciá-los ou divulgá-los.
+                </p>
+                <p>
+                    Amadurecer no empreendedorismo é entender que o marketing é responsável por <strong>90% das suas vendas</strong>. Se o marketing for ruim, o seu faturamento será péssimo. Seguimos o exemplo de gigantes como <strong>McDonald's, Coca-Cola e L'Oréal</strong>, onde o maior investimento está onde o resultado acontece: no marketing de alto impacto.
+                </p>
+            </div>
+
+            <div class="highlight-box" id="objetivo">
+                <h3>Nosso Objetivo</h3>
+                <p style="font-size: 1.2rem; opacity: 0.9;">
+                    Garantir o resultado e a escalabilidade da sua empresa através de estratégias baseadas em dados, transformando cada centavo investido em tráfego em lucro real e previsível.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos">
+        <div class="container">
+            <h2 class="section-title">Planos de Escala</h2>
+            <div class="plans-grid">
+                <div class="card">
+                    <h3>Pacote PP</h3>
+                    <p class="subtitle">O primeiro passo para vender todos os dias.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Gestão Meta ou Google Ads</li>
+                        <li><i class="fas fa-check"></i> Segmentação certeira</li>
+                        <li><i class="fas fa-check"></i> Funil simples de conversão</li>
+                        <li><i class="fas fa-check"></i> Monitoramento semanal</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Pacote P</h3>
+                    <p class="subtitle">Público e Remarketing avançado.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Tudo do Pacote PP</li>
+                        <li><i class="fas fa-check"></i> Remarketing estratégico</li>
+                        <li><i class="fas fa-check"></i> 3 testes de anúncios</li>
+                        <li><i class="fas fa-check"></i> Funil completo de compra</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Pacote M</h3>
+                    <p class="subtitle">Crescimento Consistente e Automação.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Otimização diária de custos</li>
+                        <li><i class="fas fa-check"></i> Automação básica</li>
+                        <li><i class="fas fa-check"></i> Reunião semanal</li>
+                        <li><i class="fas fa-check"></i> Relatório de insights</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Pacote G</h3>
+                    <p class="subtitle">Escala Real e Omnichannel.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Meta, Google e TikTok Ads</li>
+                        <li><i class="fas fa-check"></i> Auditoria de conversão</li>
+                        <li><i class="fas fa-check"></i> Estrutura Captura/Venda</li>
+                        <li><i class="fas fa-check"></i> Metas semanais</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Pacote XG</h3>
+                    <p class="subtitle">Expansão Acelerada Regional.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Testes de Oferta Irresistível</li>
+                        <li><i class="fas fa-check"></i> Testes A/B contínuos</li>
+                        <li><i class="fas fa-check"></i> Reuniões Ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Suporte Prioritário</li>
+                    </ul>
+                </div>
+
+                <div class="card hiper-card">
+                    <h3>Pacote Hiper</h3>
+                    <p class="subtitle">Domínio Total: Para ser o número 1.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-star"></i> Gestão Total da Operação</li>
+                        <li><i class="fas fa-star"></i> Dashboards em Tempo Real</li>
+                        <li><i class="fas fa-star"></i> Criativos Ilimitados (Reels/Vídeo)</li>
+                        <li><i class="fas fa-star"></i> Suporte Direto com Fundador</li>
+                        <li><i class="fas fa-star"></i> Acompanhamento de Faturamento</li>
+                    </ul>
+                </div>
+                <a href="#contato" class="btn btn-orcamento" style="display:inline-block; padding: 40px 80px;">Fazer Orçamento</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container">
+            <center><img src="imgs/GS branco.png"/></center>
+            <h2>E aí, vamos alavancar sua empresa?!</h2>
+            <p style="margin: 30px 0; opacity: 0.8;">GS Marketing e Estratégia - Gustavo Sepulvida.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXNchrmU2eVlSMWShu7zJVHMw34aYJ424fdb-K6Na39Tl__A/viewform?usp=publish-editor" class="btn btn-accent" style="display:inline-block; padding: 20px 60px;">FALAR NO WHATSAPP</a>
+        </div>
+    </footer>
+
+</body>
+</html>
